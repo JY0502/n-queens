@@ -260,7 +260,15 @@
 
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
-      return false; // fixme
+      //make a variable and set it equal to the length of the board - 2
+      const indexOfDiag = this.rows()[0].length - 2;
+      //iterate thru the whole board without the edge
+      for (let i = -(indexOfDiag); i <= indexOfDiag; i++) {
+        if (this.hasMinorDiagonalConflictAt(i)) {
+          return true;
+        }
+      }
+      return false;
     },
 
     /*--------------------  End of Helper Functions  ---------------------*/
