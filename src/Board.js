@@ -97,7 +97,11 @@
       //initite result
       var result = false;
       //check how big is the board
-      var boardsize = this.get(0).length;
+      if(this.rows().length === 0){
+        var boardsize = 0;
+      }else{
+        var boardsize = this.get(0).length;
+      }
       //check each row if there is piece
       for(var i=0;i<boardsize;i++){
         result = result || this.hasRowConflictAt(i);
@@ -136,7 +140,11 @@
       //initiate result
       var result = false;
       //get board size;
-      var boardsize = this.get(0).length;
+      if(this.rows().length === 0){
+        var boardsize = 0
+      }else{
+        var boardsize = this.get(0).length;
+      }
       //iterate each colum and combine with currentt result
       for(var i=0;i<boardsize;i++){
         result = result || this.hasColConflictAt(i);
@@ -157,7 +165,11 @@
       //initiate majorDiagonalColumnIndexAtFirstRow to be "n"
       var n = majorDiagonalColumnIndexAtFirstRow;
       //get length of the board
-      var boardSize = this.get(0).length;
+      if(this.rows().length === 0){
+        var boardSize = 0;
+      }else{
+        var boardSize = this.get(0).length;
+      }
       //initiate diag on board
       var diagArray = [];
 
@@ -197,8 +209,13 @@
     // test if any major diagonals on this board contain conflicts
     hasAnyMajorDiagonalConflicts: function() {
       //make a variable and set it equal to the length of the board - 2
-      const indexOfDiag = this.rows()[0].length - 2;
+      if(this.rows().length === 0){
+        var indexOfDiag = 0;
+      }else{
+        var indexOfDiag = this.rows()[0].length - 2;
+      }
       //iterate thru the whole board without the edge
+      console.log("indexofdiag"+indexOfDiag);
       for (let i = -(indexOfDiag); i <= indexOfDiag; i++) {
         if (this.hasMajorDiagonalConflictAt(i)) {
           return true;
@@ -220,7 +237,11 @@
       //initiate array for storing minor diag
       var diagArr = [];
       //get board length : BoardSize
-      var boardSize = this.get(0).length;
+      if(this.rows().length === 0){
+        var boardSize = 0
+      }else{
+        var boardSize = this.get(0).length;
+      }
 
       if(n>=0){
       //base on the input value, iterate BoardSize-input
@@ -261,7 +282,11 @@
     // test if any minor diagonals on this board contain conflicts
     hasAnyMinorDiagonalConflicts: function() {
       //make a variable and set it equal to the length of the board - 2
-      const indexOfDiag = this.rows()[0].length - 2;
+      if(this.rows().length ===0){
+        var indexOfDiag = 0;
+      }else{
+        var indexOfDiag = this.rows()[0].length - 2;
+      }
       //iterate thru the whole board without the edge
       for (let i = -(indexOfDiag); i <= indexOfDiag; i++) {
         if (this.hasMinorDiagonalConflictAt(i)) {
